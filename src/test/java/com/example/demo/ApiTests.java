@@ -6,8 +6,11 @@ import com.example.member.controller.MemberController;
 import com.example.member.dto.SigninDto;
 import com.example.member.repository.MemberRepository;
 import com.example.member.service.MemberService;
+import com.example.search.controller.SearchController;
+import com.example.search.service.SearchService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -38,19 +41,17 @@ public class ApiTests {
     @Autowired
     private MemberController memberController;
 
-//    @Autowired
-//    private MathController mathController;
-//
-//    @Autowired
-//    private MathService mathService;
-//    @Mock
-//    private Model model;
-
     @Mock
     private MathService mathService;
 
     @Autowired
     private MathController mathController;
+
+    @Mock
+    private SearchService searchService;
+
+    @InjectMocks
+    private SearchController searchController;
 
     @Test
     @DisplayName("템플릿 잘 들어가는 지 테스트")
@@ -88,5 +89,18 @@ public class ApiTests {
 
         assertEquals(expected, result);
 
+    }
+
+    @Test
+    @DisplayName("검색 테스트")
+    public void searchTest(){
+        String searchThing = "test";
+        String expectedResponse = "Expected response from search service";
+
+        when(searchService.search(searchThing)).thenReturn(expectedResponse);
+
+        String result = searchController.search(searchThing);
+
+        assertEquals(expectedResponse, result);
     }
 }
