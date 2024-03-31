@@ -1,9 +1,7 @@
-package com.example.order.controller;
+package com.example.orders.controller;
 
-import com.example.member.dto.SigninDto;
-import com.example.member.service.MemberService;
-import com.example.order.dto.OrderDto;
-import com.example.order.service.OrderService;
+import com.example.orders.dto.OrdersDto;
+import com.example.orders.service.OrdersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,19 +10,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequiredArgsConstructor
-public class OrderController {
+public class OrdersController {
 
-    private final OrderService orderService;
+    private final OrdersService orderService;
 
     @PostMapping("/orderQueue")
     @ResponseBody
-    public String orderQueue(@RequestBody OrderDto orderDto){
+    public String orderQueue(@RequestBody OrdersDto orderDto){
         return orderService.orderQueue(orderDto);
     }
 
     @PostMapping("/orderSemapore")
     @ResponseBody
-    public String orderSemapore(@RequestBody OrderDto orderDto){
+    public String orderSemapore(@RequestBody OrdersDto orderDto){
         return orderService.orderSema(orderDto);
     }
 }

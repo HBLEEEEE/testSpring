@@ -1,6 +1,5 @@
-package com.example.order.entity;
+package com.example.orders.entity;
 
-import com.example.member.dto.SigninDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-public class Order {
+public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +19,7 @@ public class Order {
     @Column(nullable = false)
     private Long quantity;
 
-    public Order(Long orderNumber, Long quantity){
+    public Orders(Long orderNumber, Long quantity){
         this.orderNumber = orderNumber;
         this.quantity = quantity;
     }

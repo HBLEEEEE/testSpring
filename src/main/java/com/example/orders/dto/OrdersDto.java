@@ -1,16 +1,16 @@
-package com.example.order.dto;
+package com.example.orders.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class OrderDto {
+public class OrdersDto {
 
     private Long orderNumber;
     private Long quantity;
 
-    public OrderDto(Long orderNumber, Long quantity) {
+    public OrdersDto(Long orderNumber, Long quantity) {
         this.orderNumber = orderNumber;
         this.quantity = quantity;
     }
